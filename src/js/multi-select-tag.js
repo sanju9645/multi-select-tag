@@ -128,6 +128,7 @@ function MultiSelectTag(selectElOrId, config) {
       });
   
       tagInput.addEventListener('focus', function() {
+        selectedTagsDropdown.classList.add('hidden'); // Hide selected items dropdown
         renderDropdown();
       });
     }
@@ -188,10 +189,13 @@ function MultiSelectTag(selectElOrId, config) {
         var closeBtn = document.createElement('span');
         closeBtn.className = 'cross';
         closeBtn.innerHTML = '&times;';
-        closeBtn.addEventListener('click', function() {
+        span.appendChild(closeBtn);
+        
+        // Make the entire tag item clickable to remove
+        span.addEventListener('click', function() {
           deselectTag(tag);
         });
-        span.appendChild(closeBtn);
+        
         selectedTagsContainer.insertBefore(span, tagInput);
       });
       
@@ -203,6 +207,7 @@ function MultiSelectTag(selectElOrId, config) {
         moreSpan.style.cursor = 'pointer';
         moreSpan.addEventListener('click', function(e) {
           e.stopPropagation();
+          dropdown.classList.add('hidden'); // Hide the main dropdown
           showSelectedTagsDropdown();
         });
         selectedTagsContainer.insertBefore(moreSpan, tagInput);
@@ -232,14 +237,16 @@ function MultiSelectTag(selectElOrId, config) {
         return t.id !== tag.id;
       });
       renderSelectedTags();
-      renderDropdown();
-      syncToSelect();
-      onChange(selectedTags);
       
-      // Hide selected tags dropdown if no more tags
+      // Don't show the main dropdown when deselecting from selected tags dropdown
+      // Only hide the selected tags dropdown if no more tags
       if (selectedTags.length === 0) {
         selectedTagsDropdown.classList.add('hidden');
+        dropdown.classList.add('hidden');
       }
+      
+      syncToSelect();
+      onChange(selectedTags);
     }
   
     // Private function: Show dropdown with all selected tags

@@ -60,10 +60,14 @@
     border-radius: 0.25rem;
     color: #1E40AF;
     background-color: #DBEAFE;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+.multi-select-tag .tag-item:hover {
+    background-color: #BFDBFE;
 }
 .multi-select-tag .cross {
     margin-left: 0.25rem;
-    cursor: pointer;
 }
 .multi-select-tag .more-indicator {
     display: flex;
