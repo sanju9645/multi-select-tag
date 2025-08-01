@@ -2,14 +2,16 @@
 // Email: habibmhamadi@gmail.com
 
 function MultiSelectTag(selectElOrId, config) {
+    config = config || {};
+
     // Private variables
     var selectElement,
         optionsData = [],
         container,
-        onChange = (config && config.onChange) || function() {},
-        required = (config && config.required) || false,
-        maxSelection = (config && typeof config.maxSelection === 'number') ? config.maxSelection : Infinity,
-        placeholder = (config && config.placeholder) || 'Search',
+        onChange = config.onChange || function() {},
+        required = config.required || false,
+        maxSelection = typeof config.maxSelection === 'number' ? config.maxSelection : Infinity,
+        placeholder = config.placeholder || 'Search',
         selectedTags = [],
         filteredOptions = [],
         highlightedIndex = -1,
