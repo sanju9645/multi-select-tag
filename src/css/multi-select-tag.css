@@ -127,9 +127,7 @@
     border-radius: 0.125rem;
     transition: background-color 0.2s ease;
 }
-.multi-select-tag .selected-tag-remove:hover {
-    background-color: #fee2e2;
-}
+
 .multi-select-tag .hidden {
     display: none;
 }

@@ -262,7 +262,7 @@ function MultiSelectTag(selectElOrId, config) {
         var removeBtn = document.createElement('span');
         removeBtn.className = 'selected-tag-remove';
         removeBtn.innerHTML = '&times;';
-        removeBtn.addEventListener('click', function(e) {
+        li.addEventListener('click', function(e) {
           e.stopPropagation();
           deselectTag(tag);
           selectedTagsDropdown.classList.add('hidden');
